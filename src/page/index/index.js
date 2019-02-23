@@ -1,1 +1,5 @@
-console.log('index');
+
+
+
+$('body').html('hello').css('background','red');
+
