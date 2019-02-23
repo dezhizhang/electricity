@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/dezhizhang/electricity/issues"
   },
-  "homepage": "https://github.com/dezhizhang/electricity#readme"
+  "homepage": "https://github.com/dezhizhang/electricity#readme",
+  "dependencies": {
+    "path": "^0.12.7",
+    "webpack": "^4.29.5",
+    "webpack-dev-server": "^3.2.0"
+  }
 }
