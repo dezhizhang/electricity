@@ -1,18 +1,12 @@
-/*
-* @Author: Rosen
-* @Date:   2017-05-08 15:28:19
-* @Last Modified by:   Rosen
-* @Last Modified time: 2018-03-24 09:45:59
-*/
-var webpack             = require('webpack');
-var ExtractTextPlugin   = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin   = require('html-webpack-plugin');
+const webpack  = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 环境变量配置，dev / online
-var WEBPACK_ENV         = process.env.WEBPACK_ENV || 'dev';
+const WEBPACK_ENV         = process.env.WEBPACK_ENV || 'dev';
 
 // 获取html-webpack-plugin参数的方法 
-var getHtmlConfig = function(name, title){
+const getHtmlConfig = function(name, title){
     return {
         template    : './src/view/' + name + '.html',
         filename    : 'view/' + name + '.html',
@@ -24,7 +18,7 @@ var getHtmlConfig = function(name, title){
     };
 };
 // webpack config
-var config = {
+const config = {
     entry: {
         'common'            : ['./src/page/common/index.js'],
         'index'             : ['./src/page/index/index.js'],
