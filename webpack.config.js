@@ -3,7 +3,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 环境变量配置，dev / online
-const WEBPACK_ENV         = process.env.WEBPACK_ENV || 'dev';
+const WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 
 // 获取html-webpack-plugin参数的方法 
 const getHtmlConfig = function(name, title){
