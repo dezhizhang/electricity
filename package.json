@@ -4,7 +4,8 @@
   "description": "mmall前端代码",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server",
+   
+    "dev":"webpack-dev-server",
     "dev_win": "./node_modules/.bin/webpack-dev-server",
     "dist": "WEBPACK_ENV=online ./node_modules/.bin/webpack -p",
     "dist_win": "set WEBPACK_ENV=online&& ./node_modules/.bin/webpack -p"
@@ -31,3 +32,5 @@
     "hogan.js": "^3.0.2"
   }
 }
+
+
