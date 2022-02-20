@@ -69,3 +69,20 @@ func (u *UserServer) GetUserPhone(ctx context.Context, req *proto.PhoneRequest) 
 	userInfoRsp := ModelToResponse(user)
 	return &userInfoRsp,nil
 }
+
+
+func (u *UserServer) GetUserId(ctx context.Context,req *proto.IdRequest) (*proto.UserInfoResponse,error)  {
+	// 通过id获取用户信息
+	var user model.User
+	result := driver.DB.First(&user,req.Id)
+	if result.RowsAffected == 0 {
+		return nil,status.Errorf(codes.NotFound,"用户不存在")
+	}
+
+	if result.Error != nil {
+		return nil,result.Error
+	}
+
+	userInfoRsp := ModelToResponse(user)
+	return &userInfoRsp,nil
+}
