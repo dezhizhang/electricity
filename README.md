@@ -1,2 +1,1 @@
-# electricity
-jquery写电商系统
+# 电商系统

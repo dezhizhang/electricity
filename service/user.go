@@ -6,8 +6,10 @@ import (
 	"electricity/model"
 	"electricity/proto"
 	"electricity/utils"
+	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"time"
 )
 
 type UserServer struct {
@@ -107,6 +109,26 @@ func (u *UserServer) CreateUser(ctx context.Context,req *proto.CreateUserInfo) (
 	userInfoRsp := ModelToResponse(user)
 	return &userInfoRsp,nil
 }
-//
-//CreateUser(context.Context, *CreateUserInfo) (*UserListResponse, error)
+
+func (u *UserServer) UpdateUser(ctx context.Context,req *proto.UpdateUserInfo) (*empty.Empty,error)  {
+	// 更新用户
+	var user model.User
+	result := driver.DB.First(&user,req.Id)
+	if result.RowsAffected == 0 {
+		return nil,status.Errorf(codes.NotFound,"用户不存在")
+	}
+
+	birthDay := time.Unix(int64(req.Birthday),0)
+	user.NickName = req.NickName
+	user.Gender = req.Gender
+	user.Birthday = &birthDay
+
+	result = driver.DB.Save(user)
+
+	if result.Error != nil {
+		return nil,status.Errorf(codes.Internal,result.Error.Error())
+	}
+	return &empty.Empty{},nil
+}
+
 
