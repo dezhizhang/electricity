@@ -11,7 +11,8 @@ var userClient proto.UserClient
 var conn *grpc.ClientConn
 
 func Init() {
-	conn,err := grpc.Dial("127.0.0.1:8000",grpc.WithInsecure())
+	var err error
+	conn,err = grpc.Dial("127.0.0.1:8000",grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
@@ -35,6 +36,7 @@ func TestGetUserList()  {
 
 func main()  {
 	Init()
+	TestGetUserList()
 	conn.Close()
 }
 
