@@ -1,7 +1,9 @@
 package main
 
 import (
+	"context"
 	"electricity/proto"
+	"fmt"
 	"google.golang.org/grpc"
 )
 
@@ -15,6 +17,20 @@ func Init() {
 	}
 
 	userClient =  proto.NewUserClient(conn)
+}
+
+func TestGetUserList()  {
+	rsp,err := userClient.GetUserList(context.Background(),&proto.PageInfo{
+		Page: 1,
+		PageSize: 10,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	for _,user := range rsp.Data {
+		fmt.Println(user.Phone,user.NickName,user.Password,user.Birthday)
+	}
 }
 
 func main()  {
