@@ -1,16 +1,15 @@
 package driver
 
 import (
-
+	"electricity/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-
 )
 
 var DB *gorm.DB
 
 func InitDB() (err error) {
-	dsn := "root:sdf@df%%$65#fdsbXT@tcp(127.0.0.1:3306)/cigua?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:sdf@df%%$65#fdsbXT@tcp(127.0.0.1:3306)/electricity?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 
@@ -22,6 +21,7 @@ func InitDB() (err error) {
 
 func init()  {
 	InitDB()
+	DB.AutoMigrate(&model.User{})
 }
 
 

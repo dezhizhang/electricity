@@ -123,7 +123,7 @@ func (u *UserServer) UpdateUser(ctx context.Context,req *proto.UpdateUserInfo) (
 	user.Gender = req.Gender
 	user.Birthday = &birthDay
 
-	result = driver.DB.Save(user)
+	result = driver.DB.Save(&user)
 
 	if result.Error != nil {
 		return nil,status.Errorf(codes.Internal,result.Error.Error())
