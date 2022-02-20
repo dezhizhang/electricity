@@ -26,9 +26,12 @@ message IdRequest {
 
 //创建用户
 message CreateUserInfo{
-  string nickName = 1;
+  string name = 1;
   string phone = 2;
-  string password = 3;
+  string nickName = 3;
+  int64 birthday = 4;
+  string gender = 5;
+  string  password = 6;
 }
 
 //更新用户信息
