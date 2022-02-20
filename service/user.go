@@ -86,3 +86,27 @@ func (u *UserServer) GetUserId(ctx context.Context,req *proto.IdRequest) (*proto
 	userInfoRsp := ModelToResponse(user)
 	return &userInfoRsp,nil
 }
+
+func (u *UserServer) CreateUser(ctx context.Context,req *proto.CreateUserInfo) (*proto.UserInfoResponse,error){
+	//新建用户
+	var user model.User
+	result := driver.DB.Where(&model.User{Phone: req.Phone}).First(&user)
+	if result.RowsAffected == 1 {
+		return nil,status.Errorf(codes.AlreadyExists,"用户已存在")
+	}
+
+	user.Phone = req.Phone
+	user.NickName = req.NickName
+	user.Password = utils.Md5String(req.Password)
+
+	// 插入数据
+	result = driver.DB.Create(&user)
+	if result.Error != nil {
+		return nil,status.Errorf(codes.Internal,result.Error.Error())
+	}
+	userInfoRsp := ModelToResponse(user)
+	return &userInfoRsp,nil
+}
+//
+//CreateUser(context.Context, *CreateUserInfo) (*UserListResponse, error)
+
