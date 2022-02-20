@@ -9,13 +9,6 @@ service User{
   rpc GetUserId(IdRequest) returns(UserListResponse);
   rpc CreateUser(CreateUserInfo) returns(UserListResponse);
   rpc UpdateUser(UpdateUserInfo) returns(google.protobuf.Empty); //更新用户
-  rpc CheckPassword(CheckPasswordInfo) returns(CheckResponse);
-}
-
-//检查用户密码
-message CheckPasswordInfo{
-  string password = 1;
-  string encryptedPassword = 2;
 }
 
 //返回用户手机号

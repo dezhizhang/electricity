@@ -20,4 +20,8 @@ func InitDB() (err error) {
 	return nil
 }
 
+func init()  {
+	InitDB()
+}
+
 
