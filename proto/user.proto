@@ -5,9 +5,9 @@ option go_package = ".;proto";
 
 service User{
   rpc GetUserList(PageInfo) returns (UserListResponse);
-  rpc GetUserPhone(PhoneRequest) returns(UserListResponse);
-  rpc GetUserId(IdRequest) returns(UserListResponse);
-  rpc CreateUser(CreateUserInfo) returns(UserListResponse);
+  rpc GetUserPhone(PhoneRequest) returns(UserInfoResponse);
+  rpc GetUserId(IdRequest) returns(UserInfoResponse);
+  rpc CreateUser(CreateUserInfo) returns(UserInfoResponse);
   rpc UpdateUser(UpdateUserInfo) returns(google.protobuf.Empty); //更新用户
 }
 

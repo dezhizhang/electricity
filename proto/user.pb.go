@@ -590,13 +590,13 @@ var file_user_proto_rawDesc = []byte{
 	0x6e, 0x66, 0x6f, 0x1a, 0x11, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65,
 	0x72, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x12, 0x0d, 0x2e, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2a, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x55,
 	0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x0a, 0x2e, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x11, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70,
+	0x74, 0x1a, 0x11, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a, 0x0a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x55, 0x73,
 	0x65, 0x72, 0x12, 0x0f, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49,
-	0x6e, 0x66, 0x6f, 0x1a, 0x11, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
+	0x6e, 0x66, 0x6f, 0x1a, 0x11, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x35, 0x0a, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
 	0x55, 0x73, 0x65, 0x72, 0x12, 0x0f, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65,
 	0x72, 0x49, 0x6e, 0x66, 0x6f, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
@@ -636,9 +636,9 @@ var file_user_proto_depIdxs = []int32{
 	3, // 4: User.CreateUser:input_type -> CreateUserInfo
 	4, // 5: User.UpdateUser:input_type -> UpdateUserInfo
 	7, // 6: User.GetUserList:output_type -> UserListResponse
-	7, // 7: User.GetUserPhone:output_type -> UserListResponse
-	7, // 8: User.GetUserId:output_type -> UserListResponse
-	7, // 9: User.CreateUser:output_type -> UserListResponse
+	6, // 7: User.GetUserPhone:output_type -> UserInfoResponse
+	6, // 8: User.GetUserId:output_type -> UserInfoResponse
+	6, // 9: User.CreateUser:output_type -> UserInfoResponse
 	8, // 10: User.UpdateUser:output_type -> google.protobuf.Empty
 	6, // [6:11] is the sub-list for method output_type
 	1, // [1:6] is the sub-list for method input_type
@@ -783,9 +783,9 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type UserClient interface {
 	GetUserList(ctx context.Context, in *PageInfo, opts ...grpc.CallOption) (*UserListResponse, error)
-	GetUserPhone(ctx context.Context, in *PhoneRequest, opts ...grpc.CallOption) (*UserListResponse, error)
-	GetUserId(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserListResponse, error)
-	CreateUser(ctx context.Context, in *CreateUserInfo, opts ...grpc.CallOption) (*UserListResponse, error)
+	GetUserPhone(ctx context.Context, in *PhoneRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
+	GetUserId(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
+	CreateUser(ctx context.Context, in *CreateUserInfo, opts ...grpc.CallOption) (*UserInfoResponse, error)
 	UpdateUser(ctx context.Context, in *UpdateUserInfo, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
@@ -806,8 +806,8 @@ func (c *userClient) GetUserList(ctx context.Context, in *PageInfo, opts ...grpc
 	return out, nil
 }
 
-func (c *userClient) GetUserPhone(ctx context.Context, in *PhoneRequest, opts ...grpc.CallOption) (*UserListResponse, error) {
-	out := new(UserListResponse)
+func (c *userClient) GetUserPhone(ctx context.Context, in *PhoneRequest, opts ...grpc.CallOption) (*UserInfoResponse, error) {
+	out := new(UserInfoResponse)
 	err := c.cc.Invoke(ctx, "/User/GetUserPhone", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -815,8 +815,8 @@ func (c *userClient) GetUserPhone(ctx context.Context, in *PhoneRequest, opts ..
 	return out, nil
 }
 
-func (c *userClient) GetUserId(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserListResponse, error) {
-	out := new(UserListResponse)
+func (c *userClient) GetUserId(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserInfoResponse, error) {
+	out := new(UserInfoResponse)
 	err := c.cc.Invoke(ctx, "/User/GetUserId", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -824,8 +824,8 @@ func (c *userClient) GetUserId(ctx context.Context, in *IdRequest, opts ...grpc.
 	return out, nil
 }
 
-func (c *userClient) CreateUser(ctx context.Context, in *CreateUserInfo, opts ...grpc.CallOption) (*UserListResponse, error) {
-	out := new(UserListResponse)
+func (c *userClient) CreateUser(ctx context.Context, in *CreateUserInfo, opts ...grpc.CallOption) (*UserInfoResponse, error) {
+	out := new(UserInfoResponse)
 	err := c.cc.Invoke(ctx, "/User/CreateUser", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -845,9 +845,9 @@ func (c *userClient) UpdateUser(ctx context.Context, in *UpdateUserInfo, opts ..
 // UserServer is the server API for User service.
 type UserServer interface {
 	GetUserList(context.Context, *PageInfo) (*UserListResponse, error)
-	GetUserPhone(context.Context, *PhoneRequest) (*UserListResponse, error)
-	GetUserId(context.Context, *IdRequest) (*UserListResponse, error)
-	CreateUser(context.Context, *CreateUserInfo) (*UserListResponse, error)
+	GetUserPhone(context.Context, *PhoneRequest) (*UserInfoResponse, error)
+	GetUserId(context.Context, *IdRequest) (*UserInfoResponse, error)
+	CreateUser(context.Context, *CreateUserInfo) (*UserInfoResponse, error)
 	UpdateUser(context.Context, *UpdateUserInfo) (*emptypb.Empty, error)
 }
 
@@ -858,13 +858,13 @@ type UnimplementedUserServer struct {
 func (*UnimplementedUserServer) GetUserList(context.Context, *PageInfo) (*UserListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserList not implemented")
 }
-func (*UnimplementedUserServer) GetUserPhone(context.Context, *PhoneRequest) (*UserListResponse, error) {
+func (*UnimplementedUserServer) GetUserPhone(context.Context, *PhoneRequest) (*UserInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserPhone not implemented")
 }
-func (*UnimplementedUserServer) GetUserId(context.Context, *IdRequest) (*UserListResponse, error) {
+func (*UnimplementedUserServer) GetUserId(context.Context, *IdRequest) (*UserInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserId not implemented")
 }
-func (*UnimplementedUserServer) CreateUser(context.Context, *CreateUserInfo) (*UserListResponse, error) {
+func (*UnimplementedUserServer) CreateUser(context.Context, *CreateUserInfo) (*UserInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
 func (*UnimplementedUserServer) UpdateUser(context.Context, *UpdateUserInfo) (*emptypb.Empty, error) {
