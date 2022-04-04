@@ -1,6 +1,8 @@
 package backend
 
 import (
+	"electricity/driver"
+	"electricity/model"
 	"electricity/utils"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -8,7 +10,7 @@ import (
 )
 
 type LoginController struct {
-
+	BaseController
 }
 
 func (that LoginController) Login(c *gin.Context) {
@@ -30,5 +32,23 @@ func (that LoginController) Captcha(c *gin.Context)  {
 //登录
 
 func (that LoginController) DoLogin(c *gin.Context)  {
+	captchaId := c.PostForm("captchaId")
+	email := c.PostForm("email")
+	password := c.PostForm("password")
+	code := c.PostForm("code")
 
+	flag := utils.VerifyCaptcha(captchaId,code)
+	if !flag {
+		that.error(c,"验证码不正确","/admin/login")
+		return
+	}
+
+	var user []model.User
+	driver.DB.Where("email=? AND password=?",email,password).Find(&user)
+
+	if len(user) <=0 {
+		that.error(c,"用户名或密码错误","/admin/login")
+		return
+	}
+	that.success(c,"登录成功","/admin/manager")
 }

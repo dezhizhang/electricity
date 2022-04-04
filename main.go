@@ -1,6 +1,7 @@
 package main
 
 import (
+	"electricity/driver"
 	"electricity/routes"
 	"github.com/gin-gonic/gin"
 )
@@ -8,6 +9,9 @@ import (
 func main()  {
 
 	r := gin.Default()
+
+	// 初始化数据库
+	driver.InitDB()
 
 	//配置模板
 	r.LoadHTMLGlob("templates/**/**/*")

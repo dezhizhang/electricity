@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>用户登录</title>
     <link rel="stylesheet" href="/static/backend/css/login.css">
-    <script type="text/javascript" src="/static/backend/bootstrap/js/jquery-1.10.1.js"></script>
+    <script type="text/javascript" src="/static/backend/bootstrap/js/codejquery-1.10.1.js"></script>
     <script type="text/javascript" src="/static/backend/js/login.js"></script>
 </head>
 <body>
     <div class="container">
         <div id="login">
             <form action="/admin/doLogin" method="post">
-                <input type="hidden" name="captchaId" id="captchaId">
+                <input type="hidden" name="captchaId">
                 <div class="title">数字平台</div>
                 <dl>
-                    <dd>邮&nbsp;&nbsp;&nbsp;箱：<input class="text" type="text" name="email" id="username"></dd>
-                    <dd>密&nbsp;&nbsp;&nbsp;码：<input class="text" type="password" name="password" id="password"></dd>
-                    <dd>验证码：<input id="verify" type="text" name="verifyValue">
+                    <dd>邮&nbsp;&nbsp;&nbsp;箱：<input class="text" type="text" name="email" ></dd>
+                    <dd>密&nbsp;&nbsp;&nbsp;码：<input class="text" type="password" name="password"></dd>
+                    <dd>验证码：<input id="verify" type="text" name="code">
                         <img id="captchaImg" src="">
                     </dd>
                     <dd><input type="submit" class="submit" name="dosubmit" value=""></dd>
