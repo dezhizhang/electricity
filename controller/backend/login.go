@@ -1,11 +1,14 @@
 package backend
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
 type LoginController struct {
 
 }
 
 func (that LoginController) Login(c *gin.Context) {
-	c.HTML("backend/login/index.html",nil)
+	c.HTML(http.StatusOK,"backend/login/index.html",nil)
 }

@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"electricity/routes"
+	"github.com/gin-gonic/gin"
+)
 
 func main()  {
 
@@ -10,6 +13,9 @@ func main()  {
 	r.LoadHTMLGlob("templates/**/**/*")
 	// 配置静态资源
 	r.Static("/static","./static")
+
+	routes.BackendRouter(r)
+
 
 
 	r.Run(":8000")
