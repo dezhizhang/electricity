@@ -1,30 +1,20 @@
 package main
 
-import (
-	"electricity/proto"
-	"electricity/service"
-	"flag"
-	"fmt"
-	"google.golang.org/grpc"
-	"net"
-)
+import "github.com/gin-gonic/gin"
 
 func main()  {
 
-	IP := flag.String("ip","127.0.0.1","ip地址")
-	PORT := flag.Int("port",8000,"端口")
+	r := gin.Default()
 
-	flag.Parse()
-	server := grpc.NewServer()
-	proto.RegisterUserServer(server,&service.UserServer{})
-	listen,err := net.Listen("tcp",fmt.Sprintf("%s:%d",*IP,*PORT))
-	if err != nil {
-		panic("fail to listen:" + err.Error())
-	}
-	err = server.Serve(listen)
-	if err != nil  {
-		panic("fail to start grpc:" + err.Error())
-	}
+	//配置模板
+	r.LoadHTMLGlob("templates/**/**/*")
+	// 配置静态资源
+	r.Static("/static","./static")
+
+
+	r.Run(":8000")
+
+
 
 
 }

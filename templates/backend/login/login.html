@@ -1,0 +1,34 @@
+{{ define "backend/login/index.html" }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div id="login">
+        <form action="/yuqing/admin.php?m=Public&amp;a=login" method="post" id="myform">
+            <input type="hidden" name="ajaxlogin" id="ajaxlogin">
+            <input type="hidden" name="ajaxcode" id="ajaxcode">
+            <div class="l_title">小米商城后台管理系统-IT营</div>
+            <dl>
+                <dd>管理员姓名：<input class="text" type="text" name="username" id="username"></dd>
+                <dd>管理员密码：<input class="text" type="password" name="password" id="password"></dd>
+                <dd>验　证　码：<input id="verify" type="text" name="verify">
+                    <img id="verify_img" src="/admin/verify" title="看不清？点击刷新"
+                        onclick="javascript:this.src='/admin/verify?mt='+Math.random()">
+                </dd>
+                <dd><input type="submit" class="submit" name="dosubmit" value=""></dd>
+            </dl>
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>
+{{ end }}
