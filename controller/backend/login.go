@@ -10,5 +10,5 @@ type LoginController struct {
 }
 
 func (that LoginController) Login(c *gin.Context) {
-	c.HTML(http.StatusOK,"backend/login/index.html",nil)
+	c.HTML(http.StatusOK,"backend/login/login.html",nil)
 }
