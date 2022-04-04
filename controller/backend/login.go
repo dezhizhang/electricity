@@ -26,3 +26,8 @@ func (that LoginController) Captcha(c *gin.Context)  {
 		"image":base64,
 	})
 }
+
+// 用户登录
+func ()  {
+
+}

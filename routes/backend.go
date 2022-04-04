@@ -10,4 +10,5 @@ func BackendRouter(r *gin.Engine) {
 	admin := r.Group("/admin")
 	admin.GET("/login",backend.LoginController{}.Login)
 	admin.GET("/captcha",backend.LoginController{}.Captcha)
+	admin.POST("/doLogin",backend.LoginController{}.DoLogin)
 }

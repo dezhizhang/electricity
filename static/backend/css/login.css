@@ -68,12 +68,13 @@ body {
 .text{
 	height:22px;
 }
-.l_title{
+.title{
 	height:40px;
 	line-height:40px;
 	font-size:24px;
 	padding-left:5px;
 	padding-top:10px;
+	text-align: center;
 	color:#01458e;
 	font-weight:bold;
 	
