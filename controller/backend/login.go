@@ -27,7 +27,8 @@ func (that LoginController) Captcha(c *gin.Context)  {
 	})
 }
 
-// 用户登录
-func ()  {
+//登录
+
+func (that LoginController) DoLogin(c *gin.Context)  {
 
 }
