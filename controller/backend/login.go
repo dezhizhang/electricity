@@ -4,6 +4,7 @@ import (
 	"electricity/driver"
 	"electricity/model"
 	"electricity/utils"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -43,8 +44,10 @@ func (that LoginController) DoLogin(c *gin.Context)  {
 		return
 	}
 
+	fmt.Println("password",utils.Md5String(password))
+
 	var user []model.User
-	driver.DB.Where("email=? AND password=?",email,password).Find(&user)
+	driver.DB.Where("email=? AND password=?",email,utils.Md5String(password)).Find(&user)
 
 	if len(user) <=0 {
 		that.error(c,"用户名或密码错误","/admin/login")

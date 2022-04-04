@@ -17,7 +17,7 @@ func (that BaseController) success(c *gin.Context,message string,redirect string
 }
 
 func (that BaseController) error(c *gin.Context,message string,redirect string) {
-	c.HTML(http.StatusOK,"backend/public/success.html",gin.H{
+	c.HTML(http.StatusOK,"backend/public/error.html",gin.H{
 		"message":message,
 		"redirect":redirect,
 	})
