@@ -12,7 +12,7 @@ func MakeCaptcha() (id string,base64 string,err error) {
 	var driver base64Captcha.Driver
 
 	driverString := base64Captcha.DriverString{
-		Height: 40,
+		Height: 36,
 		Width: 120,
 		NoiseCount: 0,
 		ShowLineOptions: 2 | 4,
@@ -35,4 +35,11 @@ func MakeCaptcha() (id string,base64 string,err error) {
 		return "", "", err
 	}
 	return id,base64,err
+}
+
+func VerifyCaptcha(id string,value string) bool {
+	if store.Verify(id,value,true) {
+		return true
+	}
+	return  false
 }
