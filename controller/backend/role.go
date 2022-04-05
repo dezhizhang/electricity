@@ -14,7 +14,13 @@ type RoleController struct {
 }
 
 func (that RoleController) Role(c *gin.Context)  {
-	c.HTML(http.StatusOK,"backend/role/index.html",nil)
+	var roles []model.Role
+	err := driver.DB.Find(&roles).Error
+	if err != nil {
+		that.Error(c,"查询失败","/admin/role")
+		return
+	}
+	c.HTML(http.StatusOK,"backend/role/index.html",roles)
 }
 
 func (that RoleController) Add(c *gin.Context)  {
@@ -41,8 +47,5 @@ func (that RoleController) DoAdd(c *gin.Context)  {
 	}
 
 	that.Success(c,"创建用户成功","/admin/role")
-
-
-
 }
 
