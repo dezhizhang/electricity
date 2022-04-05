@@ -21,7 +21,7 @@ func InitDB() (err error) {
 
 func init()  {
 	InitDB()
-	DB.AutoMigrate(&model.User{})
+	DB.AutoMigrate(&model.User{},&model.Role{})
 }
 
 

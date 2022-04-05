@@ -40,7 +40,7 @@ func (that LoginController) DoLogin(c *gin.Context)  {
 
 	flag := utils.VerifyCaptcha(captchaId,code)
 	if !flag {
-		that.error(c,"验证码不正确","/admin/login")
+		that.Error(c,"验证码不正确","/admin/login")
 		return
 	}
 
@@ -50,8 +50,8 @@ func (that LoginController) DoLogin(c *gin.Context)  {
 	driver.DB.Where("email=? AND password=?",email,utils.Md5String(password)).Find(&user)
 
 	if len(user) <=0 {
-		that.error(c,"用户名或密码错误","/admin/login")
+		that.Error(c,"用户名或密码错误","/admin/login")
 		return
 	}
-	that.success(c,"登录成功","/admin/manager")
+	that.Success(c,"登录成功","/admin/manager")
 }

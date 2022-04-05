@@ -7,8 +7,12 @@ import (
 
 func BackendRouter(r *gin.Engine) {
 	//backend := r.Group("/admin",middleware)
-	admin := r.Group("/admin")
-	admin.GET("/login",backend.LoginController{}.Login)
-	admin.GET("/captcha",backend.LoginController{}.Captcha)
-	admin.POST("/doLogin",backend.LoginController{}.DoLogin)
+	b := r.Group("/admin")
+	b.GET("/login",backend.LoginController{}.Login)
+	b.GET("/captcha",backend.LoginController{}.Captcha)
+	b.POST("/doLogin",backend.LoginController{}.DoLogin)
+
+	b.GET("/role",backend.RoleController{}.Role)
+	b.GET("/role/add",backend.RoleController{}.Add)
+	b.POST("/role/doAdd",backend.RoleController{}.DoAdd)
 }
